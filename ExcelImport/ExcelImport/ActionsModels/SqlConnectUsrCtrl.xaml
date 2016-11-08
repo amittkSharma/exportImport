@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="ExcelImport.ActionsModels.SqlConnectUsrCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Column="0" Grid.Row="0" Content="User Name"></Label>
+
+        <TextBox x:Name="UserNameTextBox" Grid.Column="1"   Grid.Row="0" HorizontalAlignment="Left" 
+                 VerticalAlignment="Center" Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged}" Width="400" Height="75" />
+
+
+        <Label Grid.Column="0" Grid.Row="1" Content="Password"></Label>
+
+        <TextBox x:Name="PasswordTextBox" Grid.Column="1"   Grid.Row="1" HorizontalAlignment="Left" 
+                 VerticalAlignment="Center" Text="{Binding Path=Password, UpdateSourceTrigger=PropertyChanged}" Width="400" Height="75" />
+
+
+        <Label Grid.Column="3" Grid.Row="0" Content="DataSource"></Label>
+        <TextBox x:Name="DatasourceTextBox" Grid.Column="4"  Grid.Row="0" HorizontalAlignment="Left" 
+                 VerticalAlignment="Center" Text="{Binding Path=DataSource, UpdateSourceTrigger=PropertyChanged}" Width="400" Height="75" />
+
+
+        <Label Grid.Column="3" Grid.Row="1" Content="Catalog"></Label>
+        <TextBox x:Name="CatalogTextBox" Grid.Column="4"  Grid.Row="1" HorizontalAlignment="Left" 
+                 VerticalAlignment="Center" Text="{Binding Path=Catalog, UpdateSourceTrigger=PropertyChanged}" Width="400" Height="75" />
+
+        <Button x:Name="ConnectButton"
+                Grid.Column="1"  
+                Grid.Row="2" 
+                Content="Connect"
+                Margin="0,5,10,5" 
+    		   Command="{Binding ConnectToDbCmd}" >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SqlConnected}" Value="True">
+                            <Setter Property="Background" Value="LightGreen" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SqlConnected}" Value="False">
+                            <Setter Property="Background" Value="Red" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+
+        <Button x:Name="ExportButton"
+                Grid.Column="4"  
+                Grid.Row="2" 
+                Content="Import Data"
+                Margin="0,5,10,5" 
+    		   Command="{Binding ExportDataToDbCmd}" >
+        </Button>
+
+    </Grid>
+</UserControl>

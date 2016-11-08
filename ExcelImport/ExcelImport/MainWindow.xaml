@@ -1,0 +1,36 @@
+﻿<Window x:Class="ExcelImport.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Import Data From Csv to Database Tool" WindowStartupLocation="CenterScreen" WindowState="Normal" Icon="./Images/exportImport.jpg">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" 
+              Grid.Row="1" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <ContentControl Grid.Row="0" 
+                            Content="{Binding Path=Control, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}" />
+
+            <ContentControl Grid.Row="2" 
+                            Content="{Binding Path=SqlConnectControl, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+
+
+
+    </Grid>
+</Window>
